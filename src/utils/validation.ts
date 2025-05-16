@@ -1,8 +1,11 @@
 import * as Yup from "yup";
+
+/** Regex templates */
 const emailRgx = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
 const passwordRgx =
 	/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
 
+/** login validation schema using yup */
 export const loginValidationSchema = Yup.object().shape({
 	email: Yup.string()
 		.email("Invalid email address")
@@ -18,6 +21,7 @@ export const loginValidationSchema = Yup.object().shape({
 		}),
 });
 
+/** signup validation schema using yup */
 export const signUpValidationSchema = Yup.object().shape({
 	name: Yup.string().required(
 		"Please enter your name"
@@ -40,6 +44,7 @@ export const signUpValidationSchema = Yup.object().shape({
 		.oneOf([Yup.ref("password")], "Passwords must match"),
 });
 
+/**  create blog validation schema using yup */
 export const blogValidationSchema = Yup.object().shape({
 	title: Yup.string()
 		.required("please enter the title of blog")

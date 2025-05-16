@@ -55,32 +55,98 @@ const AddBlog = () => {
     mutate(values);
   };
   return (
-    <>
-      <h2>Create your blog</h2>
-      <Formik
-        initialValues={initialValues}
-        validationSchema={blogValidationSchema}
-        onSubmit={(values) => {
-          handleSubmit(values);
-        }}
-      >
-        <Form className="my_form">
-          <div className="input_group">
-            <label htmlFor="title">Title:</label>
-            <Field name="title" type="string" />
-            <ErrorMessage name="title" component="span" />
-          </div>
-          <div className="input_group">
-            <label htmlFor="body">Body:</label>
-            <Field name="body" type="string" />
-            <ErrorMessage name="body" component="span" />
-          </div>
-          <button type="submit" disabled={isPending}>
-            Post
-          </button>
-        </Form>
-      </Formik>
-    </>
+    // <>
+    //   <h2>Create your blog</h2>
+    //   <Formik
+    //     initialValues={initialValues}
+    //     validationSchema={blogValidationSchema}
+    //     onSubmit={(values) => {
+    //       handleSubmit(values);
+    //     }}
+    //   >
+    //     <Form className="my_form">
+    //       <div className="input_group">
+    //         <label htmlFor="title">Title:</label>
+    //         <Field name="title" type="string" />
+    //         <ErrorMessage name="title" component="span" />
+    //       </div>
+    //       <div className="input_group">
+    //         <label htmlFor="body">Body:</label>
+    //         <Field name="body" type="string" />
+    //         <ErrorMessage name="body" component="span" />
+    //       </div>
+    //       <button type="submit" disabled={isPending}>
+    //         Post
+    //       </button>
+    //     </Form>
+    //   </Formik>
+    // </>
+    <div className="flex justify-center p-5">
+          <Formik
+            initialValues={initialValues}
+            validationSchema={blogValidationSchema}
+            onSubmit={(values) => {
+              handleSubmit(values);
+            }}
+          >
+            {() => (
+              <Form className="w-1/2 flex justify-center">
+                <div className="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
+                  <div className="space-y-6">
+                    <h5 className="text-xl font-medium text-gray-900 dark:text-white ">
+                      Create your own blog 
+                    </h5>
+                    <div>
+                      <label
+                        htmlFor="title"
+                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                      >
+                        Title:
+                      </label>
+                      <Field
+                        name="title"
+                        type="string"
+                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                        placeholder="title..."
+                      />
+                      <ErrorMessage
+                        className="flex text-red-400 text-left"
+                        name="title"
+                        component="span"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="body"
+                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                      >
+                        Body:
+                      </label>
+                      <Field
+                        name="body"
+                        type="string"
+                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                        placeholder="body..."
+                      />
+                      <ErrorMessage
+                        name="body"
+                        className="flex text-red-400 text-left"
+                        component="span"
+                      />
+                    </div>
+                    <button
+                      type="submit"
+                      className="w-full focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    >
+                      Create Blog
+                    </button>
+                    
+                  </div>
+                </div>
+              </Form>
+            )}
+          </Formik>
+        </div>
   );
 };
 
