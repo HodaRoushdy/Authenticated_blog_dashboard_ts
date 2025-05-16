@@ -5,7 +5,6 @@ import { createBrowserRouter, Link, RouterProvider } from 'react-router-dom';
 import Login from './pages/login/Login';
 import ErrorPage from './pages/error/Error';
 import { ToastContainer } from "react-toastify";
-import './App.css'
 import SignUp from './pages/sign_up/SignUp';
 import Navbar from './components/Navbar/Navbar';
 import ProtectedRoutes from './components/ProtectedRoute';
@@ -14,6 +13,7 @@ import Blogs from './pages/blogs/Blogs';
 import AddBlog from './pages/blogs/addBlog/AddBlog';
 import BlogDetails from './pages/blogs/blogDetails/BlogDetails';
 import Logout from './pages/logout/Logout';
+import './App.css'
 
 
 function App() {
