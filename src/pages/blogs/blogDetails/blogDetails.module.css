@@ -1,0 +1,14 @@
+.blogPage{
+    padding: 2rem;
+    margin: auto;
+    display: flex;
+    height: 70vh;
+    align-items: center;
+}
+.BlogDetails{
+    border-radius: 1rem;
+    padding: 1rem;
+    width: 100%;
+    border:1px solid gainsboro;
+    text-align: center;
+}

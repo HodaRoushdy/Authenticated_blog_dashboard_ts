@@ -1,0 +1,8 @@
+.pagesGroup {
+	display: flex;
+	gap: 0.5rem;
+}
+.active {
+	background-color: #1a1a1a;
+	color: white;
+}

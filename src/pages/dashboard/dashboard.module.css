@@ -1,0 +1,43 @@
+.dashboardContainer {
+  display: flex;
+  flex-direction: column;
+}
+.dashboardHeader {
+  padding: 0.5rem 1rem;
+  background-color: rgba(171, 166, 169, 0.678);
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  width: 100%;
+  border-radius: 0.5rem;
+}
+.dashboardHeader h3 {
+  line-height: 0.5rem;
+}
+.dashboardHeader img {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 6rem;
+}
+.postCard {
+  width: 30%;
+  padding: 1rem 0;
+  background-color: rgb(231 223 228 / 46%);
+  border-radius: 0.5rem;
+}
+.postsSec {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+@media screen and (max-width: 900px) {
+  .postCard {
+    width: 45%;
+  }
+}
+@media screen and (max-width: 600px) {
+  .postCard {
+    width: 100%;
+  }
+}

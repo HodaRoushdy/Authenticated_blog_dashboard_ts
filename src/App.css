@@ -1,0 +1,30 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  text-align: center;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+.my_form {
+  margin: auto;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-align: start;
+}
+.input_group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.input_group input {
+  padding: 0.3rem;
+  border-radius: 0.3rem;
+}
+.input_group span{
+    color: red;
+}
+.my_form button{
+    margin-top: 1rem;
+}
