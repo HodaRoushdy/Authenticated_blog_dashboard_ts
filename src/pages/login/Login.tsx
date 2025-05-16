@@ -12,10 +12,12 @@ const Login = () => {
     email: "",
     password: "",
   };
+  /** handle login process using redux */
   const handleSubmit = (values: ILoginValues) => {
     dispatch(login(values));
     navigate("/blogs");
   };
+  
   return (
     <div className="flex justify-center p-5">
       <Formik

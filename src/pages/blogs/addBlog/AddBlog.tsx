@@ -13,6 +13,7 @@ const AddBlog = () => {
     body: "",
   };
 
+  /** the main function to create blog */
   const createNewPost = async (values:IEnteredValues) => {
     const res = await fetch("https://jsonplaceholder.typicode.com/posts", {
       method: "POST",
@@ -33,7 +34,8 @@ const AddBlog = () => {
     }
     return res;
   };
-
+  
+  /** tanstack query function to mutate data to add new blog */
   const { mutate, isError, isPending, error } = useMutation({
     mutationFn: (values : IEnteredValues) => {
       return createNewPost(values);
@@ -54,34 +56,10 @@ const AddBlog = () => {
   const handleSubmit = (values:IEnteredValues) => {
     mutate(values);
   };
+
   return (
-    // <>
-    //   <h2>Create your blog</h2>
-    //   <Formik
-    //     initialValues={initialValues}
-    //     validationSchema={blogValidationSchema}
-    //     onSubmit={(values) => {
-    //       handleSubmit(values);
-    //     }}
-    //   >
-    //     <Form className="my_form">
-    //       <div className="input_group">
-    //         <label htmlFor="title">Title:</label>
-    //         <Field name="title" type="string" />
-    //         <ErrorMessage name="title" component="span" />
-    //       </div>
-    //       <div className="input_group">
-    //         <label htmlFor="body">Body:</label>
-    //         <Field name="body" type="string" />
-    //         <ErrorMessage name="body" component="span" />
-    //       </div>
-    //       <button type="submit" disabled={isPending}>
-    //         Post
-    //       </button>
-    //     </Form>
-    //   </Formik>
-    // </>
     <div className="flex justify-center p-5">
+      {/** create post form */}
           <Formik
             initialValues={initialValues}
             validationSchema={blogValidationSchema}

@@ -16,10 +16,12 @@ const SignUp = () => {
     password: "",
     confirmPassword: "",
   };
+  /** handle signup process using redux */
   const handleSubmit = (values: ISignupValues) => {
     dispatch(signup(JSON.stringify(values)));
     navigate("/blogs");
   };
+  
   return (
     <>
       <div className="flex justify-center p-5">

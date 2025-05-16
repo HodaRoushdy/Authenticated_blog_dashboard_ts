@@ -4,6 +4,7 @@ import { logout } from "../../store/AuthSlice"
 
 const Logout = ()=>{
     const dispatch = useDispatch();
+    /** handle logout function using redux */
     const handleLogout = ()=>{
         dispatch(logout())
     }

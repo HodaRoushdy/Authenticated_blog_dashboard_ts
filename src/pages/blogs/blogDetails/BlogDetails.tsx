@@ -9,6 +9,7 @@ const BlogDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
+  /** the main function to fetch specific blog with its id */
   const fetchBlog = async () => {
     try {
       const blog = await fetch(
@@ -20,12 +21,14 @@ const BlogDetails = () => {
     }
   };
 
+  /** tanstack query to fetch one blog by id */
   const { data, isPending } = useQuery({
     queryKey: [`blog${id}`],
     queryFn: fetchBlog,
     staleTime: Number(import.meta.env.VITE_STALE_TIME) || 10000,
   });
 
+  /** ensure that id is valid */
   if (typeof id === "number" && !(id > 1 && id < 100)) {
     navigate("/blogs");
     return;

@@ -3,6 +3,7 @@ import { toast } from "react-toastify";
 import styles from "./dashboard.module.css";
 import type { IBlog, IError } from "../../utils/interfaces";
 
+/** the main function to delete post */
 const handleDelete = async (id:number) => {
   try {
     const res = await fetch(
@@ -20,6 +21,7 @@ const userInfo = JSON.parse(localStorage.getItem("token") || '');
 const userBlogs = JSON.parse(localStorage.getItem("blogs") || '');
 
 const Dashboard = () => {
+  /** the tanstack query function to delete item */
   const { mutate, isError, error } = useMutation({
     mutationFn: (id:number) => {
       return handleDelete(id);
@@ -29,15 +31,15 @@ const Dashboard = () => {
         position: "top-right",
       });
     },
+    onError(error) {
+      toast.error(`Error while deleting ${error.message}`, {
+        position: "top-right",
+      });
+    },
   });
 
-  isError &&
-    toast.error(`Error while deleting ${error}`, {
-      position: "top-right",
-    });
-
   const onSubmit = (id: number) => {
-    /** Deleting blog in Database Using React Query */
+    /** Deleting blog Using tanstack Query */
     // mutate(id);
     const filteredBlogs = userBlogs.filter((item:IBlog) => item.id !== id);
     localStorage.setItem("blogs", JSON.stringify(filteredBlogs));
