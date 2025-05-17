@@ -17,10 +17,12 @@ const handleDelete = async (id:number) => {
     throw new Error(`error while deleting post ${error.message}`);
   }
 };
-const userInfo = JSON.parse(localStorage.getItem("token") || '');
-const userBlogs = JSON.parse(localStorage.getItem("blogs") || '');
+
 
 const Dashboard = () => {
+  const userInfo = JSON.parse(localStorage.getItem("token") || "{}");
+	const userBlogs = JSON.parse(localStorage.getItem("blogs") || "[]");
+
   /** the tanstack query function to delete item */
   const { mutate, isError, error } = useMutation({
     mutationFn: (id:number) => {

@@ -28,6 +28,7 @@ const AuthSlice = createSlice({
 		logout(state) {
 			state.auth = false;
 			localStorage.removeItem("token");
+			localStorage.removeItem("blogs");
 		},
 	},
 });

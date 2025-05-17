@@ -8,7 +8,7 @@ import { ToastContainer } from "react-toastify";
 import SignUp from './pages/sign_up/SignUp';
 import Navbar from './components/Navbar/Navbar';
 import ProtectedRoutes from './components/ProtectedRoute';
-import Dashboard from './pages/dashboard/Dashboardt';
+import Dashboard from './pages/dashboard/Dashboard';
 import Blogs from './pages/blogs/Blogs';
 import AddBlog from './pages/blogs/addBlog/AddBlog';
 import BlogDetails from './pages/blogs/blogDetails/BlogDetails';

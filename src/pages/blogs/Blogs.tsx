@@ -3,26 +3,27 @@ import errorAnimation from "../../../public/error.json";
 import loadingAnimation from "../../../public/loading.json";
 import styles from "./blogs.module.css";
 import Lottie from "lottie-react";
-import { Link, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Pagination from "../../components/pagination/Pagination";
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import type { IBlog, IError } from "../../utils/interfaces";
 
+
 /** the main function to fetch data */
- const fetchBlogs = async () => {
+ export const fetchBlogs = async () => {
   try {
-    const blogs = await fetch("https://jsonplaceholder.typicode.com/posts");
-    return blogs.json();
-  } catch (error : IError | any) {
-    throw Error(`can not reach the resource ${error.message}`);
-  }
+		const blogs = await fetch("https://jsonplaceholder.typicode.com/posts");
+		return blogs.json();
+	} catch (error: IError | any) {
+		throw Error(`can not reach the resource ${error.message}`);
+	}
 };
 
 const Blogs = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const navigate = useNavigate()
-  let postsPerPage = 10;
+  const postsPerPage = 10;
   const lastPostIndex = currentPage * postsPerPage;
   const firstPostIndex = lastPostIndex - postsPerPage;
 

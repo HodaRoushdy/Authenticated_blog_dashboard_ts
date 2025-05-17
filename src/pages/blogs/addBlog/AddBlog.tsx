@@ -18,7 +18,7 @@ const AddBlog = () => {
     const res = await fetch("https://jsonplaceholder.typicode.com/posts", {
       method: "POST",
       body: JSON.stringify({
-        userId: JSON.parse(localStorage.getItem("token") || '').id || null,
+        userId: JSON.parse(localStorage.getItem("token") || '{}').id || null,
         ...values,
       }),
       headers: {
@@ -27,7 +27,7 @@ const AddBlog = () => {
     });
     if (res.ok) {
       const pastBlogs = JSON.parse(localStorage.getItem("blogs") || '') || [];
-      pastBlogs.push({ id: pastBlogs.length + 1, ...values });
+      pastBlogs.push({ id: pastBlogs[pastBlogs.length - 1] ? pastBlogs[pastBlogs.length - 1].id + 1 : 1, ...values });
       localStorage.setItem("blogs", JSON.stringify(pastBlogs));
     } else {
       throw new Error(`error while creating new blog `);
@@ -36,7 +36,7 @@ const AddBlog = () => {
   };
   
   /** tanstack query function to mutate data to add new blog */
-  const { mutate, isError, isPending, error } = useMutation({
+  const { mutate} = useMutation({
     mutationFn: (values : IEnteredValues) => {
       return createNewPost(values);
     },
@@ -47,11 +47,13 @@ const AddBlog = () => {
       queryClient.invalidateQueries({ queryKey: ["blogs"] });
       navigate("/dashboard");
     },
-  });
-  isError &&
-    toast.error(`${error.message}`, {
+    onError: (error) => {
+      toast.error(`${error.message}`, {
       position: "top-right",
     });
+
+    }
+  });
 
   const handleSubmit = (values:IEnteredValues) => {
     mutate(values);

@@ -20,7 +20,7 @@ const Navbar = () => {
   const { auth } = useSelector((state) => state.Auth);
   const [anchorElNav, setAnchorElNav] = useState<MouseEvent | null>();
   const [anchorElUser, setAnchorElUser] = useState<MouseEvent | null>();
-  const token = JSON.parse(localStorage.getItem("token") || "") || {};
+  const token = JSON.parse(localStorage.getItem("token") || "{}") ;
 
   const pages = auth ? ["Blogs", "Create your own blog"] : ["login", "sign up"];
 
