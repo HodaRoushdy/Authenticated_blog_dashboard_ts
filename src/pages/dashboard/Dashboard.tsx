@@ -51,7 +51,7 @@ const Dashboard = () => {
     <div className={styles.dashboardContainer}>
       <div className={styles.dashboardHeader}>
         <img src={userInfo.image} alt="userImg" />
-        <div>
+        <div className='flex flex-col gap-2'>
           <h2>{userInfo.name}</h2>
           <h3>{userInfo.email}</h3>
         </div>
