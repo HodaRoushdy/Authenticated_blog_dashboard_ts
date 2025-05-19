@@ -11,23 +11,23 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
-import { useState } from "react";
+import { useState, type MouseEvent } from "react";
 // MouseEventHandler<HTMLAnchorElement>
 
 const settings = ["Dashboard", "Logout"];
 
 const Navbar = () => {
   const { auth } = useSelector((state:{Auth:{auth:boolean}}) => state.Auth);
-  const [anchorElNav, setAnchorElNav] = useState<MouseEvent | null>();
-  const [anchorElUser, setAnchorElUser] = useState<MouseEvent | null>();
+  const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
+  const [anchorElUser, setAnchorElUser] = useState<HTMLElement | null>(null);
   const token = JSON.parse(localStorage.getItem("token") || "{}") ;
 
   const pages = auth ? ["Blogs", "Create your own blog"] : ["login", "sign up"];
 
-  const handleOpenNavMenu = (event: HTMLAnchorElement) => {
+  const handleOpenNavMenu = (event:MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
   };
-  const handleOpenUserMenu = (event) => {
+  const handleOpenUserMenu = (event: MouseEvent<HTMLElement>) => {
     setAnchorElUser(event.currentTarget);
   };
 
