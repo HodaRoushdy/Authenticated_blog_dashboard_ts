@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import Dashboard from "./Dashboard";
-import { describe, it, beforeEach, vi, afterEach } from "vitest";
+import { describe, it, beforeEach, vi, afterEach, expect } from "vitest";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const queryClient = new QueryClient();
