@@ -17,7 +17,7 @@ import { useState } from "react";
 const settings = ["Dashboard", "Logout"];
 
 const Navbar = () => {
-  const { auth } = useSelector((state) => state.Auth);
+  const { auth } = useSelector((state:{Auth:{auth:boolean}}) => state.Auth);
   const [anchorElNav, setAnchorElNav] = useState<MouseEvent | null>();
   const [anchorElUser, setAnchorElUser] = useState<MouseEvent | null>();
   const token = JSON.parse(localStorage.getItem("token") || "{}") ;

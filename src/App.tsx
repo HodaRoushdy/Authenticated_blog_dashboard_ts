@@ -18,7 +18,7 @@ import './App.css'
 
 function App() {
   const queryClient = new QueryClient();
-    const { auth } = useSelector((state) => state.Auth);
+    const { auth } = useSelector((state:{Auth:{auth:boolean}}) => state.Auth);
   const router = createBrowserRouter([
     {
       path: "/",
