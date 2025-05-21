@@ -13,6 +13,10 @@
   gap: 1rem;
   padding: 1rem;
 }
+.blogsContainer h2{
+  font-size: 1.2rem;
+  font-weight: 500;
+}
 .blogs{
   display: flex;
   flex-wrap: wrap;

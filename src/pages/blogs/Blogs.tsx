@@ -3,7 +3,7 @@ import errorAnimation from "../../../public/error.json";
 import loadingAnimation from "../../../public/loading.json";
 import styles from "./blogs.module.css";
 import Lottie from "lottie-react";
-import {  useNavigate } from "react-router-dom";
+import {  Link } from "react-router-dom";
 import { useState } from "react";
 import Pagination from "../../components/pagination/Pagination";
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
@@ -22,7 +22,6 @@ import type { IBlog, IError } from "../../utils/interfaces";
 
 const Blogs = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const navigate = useNavigate()
   const postsPerPage = 10;
   const lastPostIndex = currentPage * postsPerPage;
   const firstPostIndex = lastPostIndex - postsPerPage;
@@ -38,15 +37,10 @@ const Blogs = () => {
   const currentPosts =
     !isPending && data.length > 0 && data.slice(firstPostIndex, lastPostIndex);
 
-  /** navigate to blog details page when click on blog */
-    const handleNavigate = (blogId:number)=>{
-      navigate(`/blogs/blog-details/${blogId}`)
-    }
-
   return (
     <div className={styles.blogsContainer}>
       <div className={styles.header}>
-        <h2>Explore Blogs</h2>
+        <h1>Explore Blogs</h1>
       </div>
       {isError ? (
         <Lottie animationData={errorAnimation} loop={true} />
@@ -55,12 +49,12 @@ const Blogs = () => {
           { currentPosts.map((blog:IBlog) => (
           <div className={styles.blogCard} key={blog.id}>
             <div className={styles.titleSec}>
-              <h3>{blog.title}</h3>
+              <h2>{blog.title}</h2>
             </div>
             <div className={styles.bodySec}>
-              <span>{blog.body}</span>
+              <p>{blog.body}</p>
             </div>
-            <span onClick={() => handleNavigate(blog.id)} className={styles.arrowSec}>view details <ArrowForwardIcon/> </span>
+            <Link to={`/blogs/blog-details/${blog.id}`} className={styles.arrowSec}>view details <ArrowForwardIcon/> </Link>
           </div>
         ))}
         </div>

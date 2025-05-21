@@ -84,10 +84,11 @@ const AddBlog = () => {
                         Title:
                       </label>
                       <Field
+                      id="title"
                         name="title"
                         type="string"
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                        placeholder="title..."
+                        placeholder="Achieve your goal"
                       />
                       <ErrorMessage
                         className="flex text-red-400 text-left"
@@ -104,9 +105,10 @@ const AddBlog = () => {
                       </label>
                       <Field
                         name="body"
+                        id="body"
                         type="string"
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                        placeholder="body..."
+                        placeholder="steps to achieve your goal, starting from ..."
                       />
                       <ErrorMessage
                         name="body"
