@@ -59,7 +59,7 @@ const Login = () => {
                     htmlFor="password"
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
-                    Password:{" "}
+                    Password:
                   </label>
                   <Field
                     id="password"
@@ -81,7 +81,7 @@ const Login = () => {
                   Login to your account
                 </button>
                 <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
-                  Not registered?{" "}
+                  Not registered?
                   <a
                     href="/signup"
                     className="text-blue-700 hover:underline dark:text-blue-500"
