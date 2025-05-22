@@ -2,6 +2,7 @@ import { useMutation } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 import styles from "./dashboard.module.css";
 import type { IBlog, IError } from "../../utils/interfaces";
+import { useState } from "react";
 
 /** the main function to delete post */
 const handleDelete = async (id:number) => {
@@ -22,6 +23,7 @@ const handleDelete = async (id:number) => {
 const Dashboard = () => {
   const userInfo = JSON.parse(localStorage.getItem("token") || "{}");
 	const userBlogs = JSON.parse(localStorage.getItem("blogs") || "[]");
+  const [userBlogsState,setUserBlogsState] = useState(userBlogs)
 
   /** the tanstack query function to delete item */
   const { mutate, isError, error } = useMutation({
@@ -44,27 +46,28 @@ const Dashboard = () => {
     /** Deleting blog Using tanstack Query */
     // mutate(id);
     const filteredBlogs = userBlogs.filter((item:IBlog) => item.id !== id);
+    setUserBlogsState(filteredBlogs)
     localStorage.setItem("blogs", JSON.stringify(filteredBlogs));
   };
 
   return (
-    <div className={styles.dashboardContainer}>
+    <div className={styles.dashboardContainer} aria-live="polite" id="dashboardContainer">
       <div className={styles.dashboardHeader}>
-        <img src={userInfo.image} alt="userImg" />
+        <img src={userInfo.image} alt="user image" />
         <div className='flex flex-col gap-2'>
           <h2>{userInfo.name}</h2>
           <h3>{userInfo.email}</h3>
         </div>
       </div>
       <div className={styles.postsSec}>
-        {userBlogs.length > 0 ?
-          userBlogs.map((post:IBlog) => (
+        {userBlogsState.length > 0 ?
+          userBlogsState.map((post:IBlog) => (
             <div key={post.id} className={styles.postCard}>
               <div className={styles.postHeader}>
                 <h4>{post.title}</h4>
               </div>
               <p>{post.body}</p>
-              <button onClick={() => onSubmit(post.id)}>Delete</button>
+              <button aria-controls="dashboardContainer" onClick={() => onSubmit(post.id)}>Delete</button>
             </div>
           )) : <p>You don't have any blogs, create your own now</p>}
       </div>

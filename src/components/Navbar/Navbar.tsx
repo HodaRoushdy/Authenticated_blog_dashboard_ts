@@ -63,7 +63,6 @@ const Navbar = () => {
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
-              href=""
               size="large"
               aria-label="account of current user"
               aria-controls="menu-appbar"

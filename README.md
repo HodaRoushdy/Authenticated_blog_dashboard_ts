@@ -34,3 +34,6 @@ http://localhost:5173
 
 ## Test Structure
 - all test files are located alongside the components they test and follow the .test.tsx or .test.ts naming convention.
+
+## Accessibility
+- text contrast : 12.09 
